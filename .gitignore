@@ -1,0 +1,16 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# Secrets / lokale Konfiguration — NIE committen!
+.env
+
+# Test-Fixtures (eigene Bilder)
+tests/fixtures/
+
+# macOS
+.DS_Store
