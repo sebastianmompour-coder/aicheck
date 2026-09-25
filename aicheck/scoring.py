@@ -2,7 +2,7 @@
 
 Gesamtscore = gewichteter Mittelwert aller anwendbaren Signal-Scores
 (score=None fällt heraus). Ein Signal mit hard_verdict erzwingt die Ampel
-unabh#ngig vom Score (z.B. valides C2PA-Manifest).
+unabhängig vom Score (z.B. valides C2PA-Manifest).
 
 Ampel: GREEN (echt-wahrscheinlich) / AMBER (unklar) / RED (KI-verdächtig).
 Triage-orientiert: im Zweifel eher AMBER/RED.
@@ -16,7 +16,7 @@ from .signals.base import SignalResult
 
 GREEN, AMBER, RED = "GREEN", "AMBER", "RED"
 _EMOJI = {GREEN: "🟢", AMBER: "🟡", RED: "🔴"}
-_LABEL = {GREEN: "echt-wahrscheinlich", AMBER: "unklar", RED: "KI-verd#chtig"}
+_LABEL = {GREEN: "echt-wahrscheinlich", AMBER: "unklar", RED: "KI-verdächtig"}
 
 
 @dataclass
