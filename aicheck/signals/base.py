@@ -8,6 +8,7 @@ der gewichteten Gesamtbewertung heraus.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Protocol, runtime_checkable
@@ -54,3 +55,14 @@ def na(name: str, weight: float, detail: str, error: bool = False) -> SignalResu
     return SignalResult(
         name=name, score=None, weight=weight, detail=detail, error=error
     )
+
+
+def find_keyword(text: str, keywords: tuple[str, ...]) -> str | None:
+    """Erstes Schlüsselwort, das in `text` als eigenständiges Wort vorkommt
+    (case-insensitiv, an Wortgrenzen). Reiner Teilstring-Vergleich wäre zu
+    unscharf: 'flux' in 'influx', 'dall' in 'Dallas', 'gemini' im Ordnernamen."""
+    lowered = text.lower()
+    for kw in keywords:
+        if re.search(rf"(?<![a-z0-9]){re.escape(kw)}(?![a-z0-9])", lowered):
+            return kw
+    return None
